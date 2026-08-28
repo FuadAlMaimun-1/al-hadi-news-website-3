@@ -14,30 +14,27 @@
             আজ: <span id="current-date"></span>
         </div>
         <div class="header-main">
-    <div class="logo-section">
-        <img src="./images/Al hadi Online-01.png" alt="Al-Hadi" class="logo-img">
-        <div class="logo-text">
-            <h1>al-hadi</h1>
-            <p>ন্যায়ের পক্ষে সংগ্রাম</p>
+            <div class="logo-section">
+                <a href="#" class="logo-brand">
+                    <img src="./images/Al hadi Online-01.png" alt="Al-Hadi" class="logo-img">
+                </a>
+                <button class="nav-toggle" id="nav-toggle" aria-label="Toggle Navigation">☰</button>
+            </div>
+
+            <nav id="nav-menu">
+                <a href="#" onclick="loadCategory('all')">সব সংবাদ</a>
+                <a href="#" onclick="loadCategory('politics')">রাজনীতি</a>
+                <a href="#" onclick="loadCategory('sports')">ক্রীড়া</a>
+                <a href="#" onclick="loadCategory('technology')">প্রযুক্তি</a>
+                <a href="#" onclick="loadCategory('entertainment')">বিনোদন</a>
+                <a href="#" onclick="loadCategory('business')">ব্যবসা</a>
+            </nav>
+
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="খোঁজ করুন...">
+                <button onclick="searchNews()">খোঁজ</button>
+            </div>
         </div>
-        <!-- ৩-লাইনের বাটনটি লোগো সেকশনের ভেতরে বসানো হয়েছে -->
-        <button class="nav-toggle" id="nav-toggle">☰</button>
-    </div>
-
-    <nav id="nav-menu">
-        <a href="#" onclick="loadCategory('all')">সব সংবাদ</a>
-        <a href="#" onclick="loadCategory('politics')">রাজনীতি</a>
-        <a href="#" onclick="loadCategory('sports')">ক্রীড়া</a>
-        <a href="#" onclick="loadCategory('technology')">প্রযুক্তি</a>
-        <a href="#" onclick="loadCategory('entertainment')">বিনোদন</a>
-        <a href="#" onclick="loadCategory('business')">ব্যবসা</a>
-    </nav>
-
-    <div class="search-box">
-        <input type="text" id="search-input" placeholder="খোঁজ করুন...">
-        <button onclick="searchNews()">খোঁজ</button>
-    </div>
-</div>
     </header>
 
     <!-- MAIN CONTENT -->

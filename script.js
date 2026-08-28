@@ -8,7 +8,7 @@
                 content: "জলবায়ু পরিবর্তনের কারণে উঁচু পর্বতের পাথর ও বরফের ভারসাম্য নষ্ট হচ্ছে। এর ফলে বাড়ছে বড় ধরনের প্রাকৃতিক বিপর্যয়ের ঝুঁকি। নেপাল ও চীনের তিব্বত সীমান্ত অঞ্চলে তেমনই এক হিমবাহ ধস ও বন্যায় প্রাণ গেছে অন্তত ৩৫৯ জনের। বিজ্ঞানীরা বলছেন, এই দুর্যোগ জলবায়ু পরিবর্তনেরই ফল।",
                 category: "news",
                 image: "https://media.prothomalo.com/prothomalo-bangla%2F2026-08-27%2Fk5w0tsby%2Fnepal-afp.jpg?rect=0%2C0%2C3345%2C2230&w=622&auto=format%2Ccompress&fmt=avif",
-                date: "২৭ আগস্ট ২০২৬",
+                date: new Date(),
                 author: "ফুয়াদ আল মাইমুন",
                 views: "২৫০০",
                 featured: true
@@ -20,7 +20,7 @@
                 content: "বাংলাদেশের ক্রীড়া দল এই বছর আন্তর্জাতিক মঞ্চে অভূতপূর্ব সাফল্য অর্জন করেছে। তারা বিশ্ব কাপে অংশগ্রহণ করে দেশের জন্য সম্মান এনেছে। এই সাফল্য আমাদের তরুণ ক্রীড়াবিদদের প্রতিভা এবং কঠোর পরিশ্রমের ফল। প্রশিক্ষক এবং কোচিং স্টাফের নিবেদিত প্রচেষ্টা এই অর্জনকে সম্ভব করেছে।",
                 category: "sports",
                 image: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=500",
-                date: "২৩ আগস্ট ২০২৬",
+                date: new Date(),
                 author: "সালিম আহমেদ",
                 views: "২৫০০",
                 featured: true
@@ -32,7 +32,7 @@
                 content: "ঢাকায় একটি অত্যাধুনিক প্রযুক্তি কেন্দ্র আজ আনুষ্ঠানিকভাবে উদ্বোধন করা হয়েছে। এই কেন্দ্রটি তরুণ উদ্যোক্তা এবং প্রযুক্তিবিদদের জন্য একটি হাব হিসেবে কাজ করবে। এখানে অত্যাধুনিক সুবিধা এবং প্রশিক্ষণ প্রোগ্রাম থাকবে।",
                 category: "technology",
                 image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500",
-                date: "২২ আগস্ট ২০২৬",
+                date: "2026-08-28T10:30:00", // YYYY-MM-DDTHH:MM:SS ফরম্যাট
                 author: "রাজিব কুমার",
                 views: "১৮০০",
                 featured: true
@@ -104,7 +104,7 @@
                 content: "একটি প্রত্নতাত্ত্বিক খননে বাংলাদেশের মধ্যযুগীয় ইতিহাসের গুরুত্বপূর্ণ নিদর্শন আবিষ্কার করা হয়েছে। এর মধ্যে রয়েছে দুর্লভ মুদ্রা এবং মৃৎপাত্র। এই আবিষ্কার আমাদের ইতিহাস সম্পর্কে নতুন আলোকপাত করবে।",
                 category: "politics",
                 image: "https://images.unsplash.com/photo-1578926314433-8a0c2f5ae2b1?w=500",
-                date: "১৬ আগস্ট ২০২৬",
+                date: "2026-08-28T10:30:00", // YYYY-MM-DDTHH:MM:SS ফরম্যাট
                 author: "ড. রফিকুল ইসলাম",
                 views: "১২০০",
                 featured: false
@@ -152,11 +152,37 @@
         });
 
         function setCurrentDate() {
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-            const today = new Date().toLocaleDateString('bn-BD', options);
-            document.getElementById('current-date').textContent = today;
-        }
+    const now = new Date();
 
+    // ১. বাংলা তারিখ ও বারের অংশ
+    const dateOptions = { 
+        timeZone: 'Asia/Dhaka', 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric'
+    };
+    const banglaDate = now.toLocaleDateString('bn-BD', dateOptions);
+
+    // ২. ইংরেজি সময়ের অংশ (যেমন: 11:59 AM)
+    const timeOptions = { 
+        timeZone: 'Asia/Dhaka', 
+        hour: 'numeric', 
+        minute: 'numeric', 
+        hour12: true 
+    };
+    const englishTime = now.toLocaleTimeString('en-US', timeOptions);
+
+    // দুটি অংশ একসাথে যুক্ত করা
+    document.getElementById('current-date').textContent = `${banglaDate}, ${englishTime}`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    setCurrentDate();
+    
+    // প্রতি ১ সেকেন্ড পর পর সময় আপডেট হবে
+    setInterval(setCurrentDate, 1000);
+});
         // ============ NAVIGATION ============
         function initializeNavToggle() {
             const toggle = document.getElementById('nav-toggle');
@@ -238,6 +264,83 @@
                 { author: "সালমা খাতুন", text: "ভবিষ্যৎ উজ্জ্বল হবে এই উদ্যোগে", article: "নতুন প্রযুক্তি কেন্দ্র ঢাকায় উদ্বোধিত হয়েছে" },
                 { author: "জামিল আহমেদ", text: "দুর্দান্ত পারফরম্যান্স দেখেছি", article: "তরুণ ক্রিকেটার নতুন রেকর্ড স্থাপন করেছে" }
             ];
+
+
+            function timeAgo(dateString) {
+    const postDate = new Date(dateString);
+    const now = new Date();
+    const seconds = Math.floor((now - postDate) / 1000);
+
+    if (seconds < 60) return "এইমাত্র";
+    
+    const minutes = Math.floor(seconds / 60);
+    if (minutes < 60) return `${toBanglaNumber(minutes)} মিনিট আগে`;
+
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${toBanglaNumber(hours)} ঘণ্টা আগে`;
+
+    const days = Math.floor(hours / 24);
+    if (days < 30) return `${toBanglaNumber(days)} দিন আগে`;
+
+    const months = Math.floor(days / 30);
+    if (months < 12) return `${toBanglaNumber(months)} মাস আগে`;
+
+    const years = Math.floor(days / 365);
+    return `${toBanglaNumber(years)} বছর আগে`;
+}
+
+// ইংরেজি সংখ্যাকে বাংলায় রূপান্তর করার ছোট ফাংশন
+function toBanglaNumber(n) {
+    const banglaDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+    return n.toString().split('').map(digit => banglaDigits[digit] || digit).join('');
+}
+
+
+// ============ NEWS GRID (কার্ডে শুধু কত সময় আগে দেখাবে) ============
+function renderNewsGrid() {
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const pageNews = filteredNews.slice(start, end);
+
+    let html = '<div class="news-grid">';
+    pageNews.forEach(article => {
+        html += `
+            <div class="news-card" onclick="openNewsModal(${article.id})">
+                <img src="${article.image}" alt="" class="news-card-img">
+                <div class="news-card-content">
+                    <span class="news-card-category">${getCategoryName(article.category)}</span>
+                    <h3>${article.title}</h3>
+                    <p>${article.description}</p>
+                    <div class="news-card-footer">
+                        <span>${timeAgo(article.date)}</span> <!-- এখানে আসল তারিখের বদলে অটোমেটিক সময় দেখাবে -->
+                        <a href="#" class="read-more" onclick="event.preventDefault(); openNewsModal(${article.id})">বিস্তারিত →</a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    html += '</div>';
+    document.getElementById('news-section').innerHTML = html;
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    setCurrentDate();
+    initializeNavToggle();
+    renderFeaturedSection();
+    renderTrendingList();
+    renderCommentsList();
+    renderNewsGrid();
+    renderPagination();
+
+    // এটি প্রতি ৩০ সেকেন্ড পর পর কোনো রিফ্রেশ ছাড়াই সময় অটোমেটিক আপডেট করবে
+    setInterval(() => {
+        renderNewsGrid();
+    }, 3000); 
+});
+
+
+
 
             let html = '';
             comments.forEach(comment => {
@@ -394,3 +497,5 @@
                 closeModal();
             }
         });
+
+ 
