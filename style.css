@@ -43,16 +43,16 @@ header {
 }
 
 /* ১. ডেক্সটপ ভিউর জন্য */
+/* ডেক্সটপ ও সব ধরনের বড় স্ক্রিনের জন্য ডিফাইন করুন */
 .header-main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px; /* উপরে-নিচে আলাদা প্যাডিং না রেখে পরিমিত রাখা */
     max-width: 1400px;
-    margin: 0 auto;
+    margin:  auto;
     position: relative;
     gap: 20px;
-    height: 90px; /* হেডারের নির্দিষ্ট একটা উচ্চতা ঠিক করে দিন */
+    padding: 10px 90px; /* ডানে-বামে ৩০ পিক্সেল প্যাডিং দেওয়া হলো যেন স্ক্রিন ছোট হলেও বামে গ্যাপ থাকে */
 }
 
 .logo-brand {
@@ -61,14 +61,14 @@ header {
     text-decoration: none;
     line-height: 0; /* ইমেজের নিচের ডিফল্ট গ্যাপ দূর করবে */
 }
-
-.logo-img {
-    height: 140px; /* এখন ৯০px-এর জায়গায় ১০০px/১১০px করলেও হেডার অতিরিক্ত বড় হবে না */
+    .logo-img {
+    height: 60px; /* হেডারের ব্যাকগ্রাউন্ড অনুযায়ী স্বাভাবিক সাইজ */
     width: auto;
-    max-width: 100%;
-    object-fit: contain;
-    transition: all 0.3s ease;
+    transform: scale(3.5); /* লোগোটি ব্যাকগ্রাউন্ড না বাড়িয়ে ১.৮ গুণ বড় দেখাবে */
+    transform-origin: center center; /* সেন্টারকে কেন্দ্র করে বড় হবে */
+    transition: transform 0.3s ease;
 }
+
 
 .nav-toggle {
     display: none;
@@ -474,6 +474,27 @@ nav a:hover {
 }
 
 /* ============ RESPONSIVE BREAKPOINTS ============ */
+
+@media (max-width: 1024px) {
+    @media (max-width: 1024px) {
+    .featured-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-side {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+} .logo-img {
+    height: 60px; /* হেডারের ব্যাকগ্রাউন্ড অনুযায়ী স্বাভাবিক সাইজ */
+    width: auto;
+    transform: scale(3.5); /* লোগোটি ব্যাকগ্রাউন্ড না বাড়িয়ে ১.৮ গুণ বড় দেখাবে */
+    transform-origin: center center; /* সেন্টারকে কেন্দ্র করে বড় হবে */
+    transition: transform 0.3s ease;
+}
+}
+
+
 
 /* ট্যাবলেট ভিউ (1024px এর নিচে) */
 @media (max-width: 1024px) {
@@ -983,6 +1004,8 @@ nav a:hover {
     }
 }
 
+
+
 /* মোবাইল ও ট্যাবলেট ভিউ (768px এর নিচে) */
 @media (max-width: 768px) {
     .header-main {
@@ -1005,10 +1028,13 @@ nav a:hover {
         margin: 0; /* লোগোকে নিজের জায়গায় রাখা হয়েছে */
     }
 
-    .logo-img {
-        height: 60px; /* মোবাইলে পরিমিত ও সুন্দর সাইজ */
-        max-width: 70vw;
-    }
+     .logo-img {
+    height: 60px; /* হেডারের ব্যাকগ্রাউন্ড অনুযায়ী স্বাভাবিক সাইজ */
+    width: auto;
+    transform: scale(3.5); /* লোগোটি ব্যাকগ্রাউন্ড না বাড়িয়ে ১.৮ গুণ বড় দেখাবে */
+    transform-origin: center center; /* সেন্টারকে কেন্দ্র করে বড় হবে */
+    transition: transform 0.3s ease;
+}
 
     .nav-toggle {
         display: block;
@@ -1072,6 +1098,15 @@ nav a:hover {
     }
 }
 
+/* ট্যাবলেট ও ছোট ল্যাপটপ ভিউ (769px থেকে 1024px) */
+@media (min-width: 769px) and (max-width: 1530px) {
+    .logo-brand {
+        margin-left: 500px; /* আপনার প্রয়োজন অনুযায়ী পিক্সেল বাড়িয়ে বা কমিয়ে নিন */
+        
+    }
+}
+
+
     /* মোবাইল ও ট্যাবলেটে লোগো মাঝখানে আনার জন্য সজ্জা */
     .logo-section {
         width: 100%;
@@ -1085,10 +1120,29 @@ nav a:hover {
         margin: 0 auto; /* লোগোকে একদম মাঝখানে পাঠাবে */
     }
 
-    .logo-img {
-        height: 75px; /* মোবাইল/ট্যাবলেটে মানানসই বড় সাইজ */
-        max-width: 70vw;
+.logo-img {
+    height: 60px; /* হেডারের ব্যাকগ্রাউন্ড অনুযায়ী স্বাভাবিক সাইজ */
+    width: auto;
+    transform: scale(3.5); /* লোগোটি ব্যাকগ্রাউন্ড না বাড়িয়ে ১.৮ গুণ বড় দেখাবে */
+    transform-origin: center center; /* সেন্টারকে কেন্দ্র করে বড় হবে */
+    transition: transform 0.3s ease;
+}
+    @media (max-width: 768px) {
+    /* প্যারেন্ট কন্টেইনারের লিমিট তুলে দেওয়া */
+    .logo-brand {
+        height: auto !important;
+        max-height: none !important;
+        display: inline-block;
     }
+
+    .logo-img {
+    height: 60px; /* হেডারের ব্যাকগ্রাউন্ড অনুযায়ী স্বাভাবিক সাইজ */
+    width: auto;
+    transform: scale(3.5); /* লোগোটি ব্যাকগ্রাউন্ড না বাড়িয়ে ১.৮ গুণ বড় দেখাবে */
+    transform-origin: center center; /* সেন্টারকে কেন্দ্র করে বড় হবে */
+    transition: transform 0.3s ease;
+}
+}
 
     .nav-toggle {
         display: block;
@@ -1141,12 +1195,16 @@ nav a:hover {
 /* ছোট মোবাইল ভিউ (480px এর নিচে) */
 @media (max-width: 480px) {
     .container {
-        padding: 15px 10px;
+        padding:5px 10px;
     }
 
-    .logo-img {
-        height: 65px; /* ছোট মোবাইলে স্ক্রিনের সাথে সামঞ্জস্য রেখে সাইজ */
-    }
+.logo-img {
+    height: 60px; /* হেডারের ব্যাকগ্রাউন্ড অনুযায়ী স্বাভাবিক সাইজ */
+    width: auto;
+    transform: scale(3.5); /* লোগোটি ব্যাকগ্রাউন্ড না বাড়িয়ে ১.৮ গুণ বড় দেখাবে */
+    transform-origin: center center; /* সেন্টারকে কেন্দ্র করে বড় হবে */
+    transition: transform 0.3s ease;
+}
 
     .modal-content {
         padding: 15px;
