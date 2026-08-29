@@ -1,3 +1,24 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;600;700&display=swap');
+
+/* এবার ফন্টটি প্রয়োগ করুন */
+#nav-menu a,
+.container,
+.header-top,
+.search-box button,
+.featured-main-content h2,
+.featured-main-content p,
+.featured-item-content h3,
+.featured-item-content p,
+.news-card-content h3,
+.news-card-content p,
+.trending-item h4,
+.trending-item p,
+.modal-content p,
+.modal-content h2 {
+    font-family: 'Noto Serif Bengali', serif !important;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -38,7 +59,7 @@ header {
     background-color: var(--primary-color);
     color: var(--white);
     padding: 8px 0;
-    font-size: 14px;
+    font-size: 16px;
     text-align: center;
 }
 
@@ -87,12 +108,16 @@ nav {
     flex-wrap: wrap;
 }
 
+#nav-menu a{
+    font: bold;
+    font-size: 20px;
+}
+
 nav a {
     padding: 10px 14px;
     text-decoration: none;
     color: var(--text-dark);
     font-weight: 500;
-    font-size: 15px;
     border-bottom: 3px solid transparent;
     transition: all 0.3s ease;
 }
@@ -181,11 +206,13 @@ nav a:hover {
     box-shadow: 0 8px 20px rgba(0,0,0,0.12);
 }
 
-.featured-main-img {
+.featured-main-img,
+.featured-item-img,
+.news-card-img {
     width: 100%;
-    height: 300px;
-    object-fit: cover;
-    display: block;
+    height: 300px; /* আপনার ফিক্সড হাইট */
+    object-fit: contain !important; /* পুরো ছবি দেখাবে, কাটবে না */
+    background-color: #f0f0f0; /* ফাঁকা জায়গায় হালকা ব্যাকগ্রাউন্ড দিতে পারেন */
 }
 
 .featured-main-content {
