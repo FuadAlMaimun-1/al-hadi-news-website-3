@@ -1,0 +1,20 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "news"
+    label: "সংবাদ"
+    folder: "content/news"
+    create: true
+    fields:
+      - { label: "শিরোনাম", name: "title", widget: "string" }
+      - { label: "সংক্ষিপ্ত বিবরণ", name: "description", widget: "text" }
+      - { label: "মূল খবর", name: "content", widget: "markdown" }
+      - { label: "ক্যাটাগরি", name: "category", widget: "string" }
+      - { label: "ছবি", name: "image", widget: "image" }
+      - { label: "তারিখ", name: "date", widget: "datetime" }
+      - { label: "লেখক", name: "author", widget: "string" }
